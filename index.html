@@ -16,7 +16,7 @@
 <body>
     <a-scene>
         <a-assets>
-            <img id="sky" src="https://rawgit.com/mkwatson/thankyou/master/img/sky4.jpg">
+            <img id="cloud" src="https://rawgit.com/mkwatson/thankyou/master/img/cloud.png">
             <a-asset-item id="tree-obj" src="https://rawgit.com/mkwatson/thankyou/master/obj/palm/tree.obj"></a-asset-item>
             <a-asset-item id="tree-mtl" src="https://rawgit.com/mkwatson/thankyou/master/obj/palm/tree.mtl"></a-asset-item>
             <!-- <script id="ten-balls" type="text/x-nunjucks-template">
@@ -26,6 +26,13 @@
                 </a-entity>
                 {% endfor %}
             </script> -->
+            <script id="clouds" type="text/x-nunjucks-template">
+                {% for x in range(0, 10) %}
+                <a-entity>
+                    <a-image id="cloud" rotation="45 0 0" src="#cloud" position="0 7 -10" width="10" height="5"></a-image>
+                </a-entity>
+                {% endfor %}
+            </script>
         </a-assets>
         <!-- <a-entity layout="type: circle; radius: 10" template="src: #ten-balls"></a-entity> -->
 
@@ -33,12 +40,20 @@
             <!-- <a-entity id="tree" obj-model="obj: #tree-obj; mtl: #tree-mtl" position="0 7.5 0"></a-entity> -->
         </a-sphere>
 
-        <a-circle position="-20 25 -25" color="#FFFF35" radius="5"></a-circle>
+        <a-circle id="sun" position="-20 30 -25" rotation="45 0 0" color="yellow" radius="5"></a-circle>
 
-        <a-ocean width="40" depth="40" density="20" color="#0ab7c1"></a-ocean>
-        <a-sky color="#3498DB"></a-sky>
+        <a-entity animation="property: rotation; to: 0 360 0; easing: linear; dur:100000; loop:true"
+                  layout="type: circle; radius: 10"
+                  position="0 3 0">
+            <a-image id="cloud" rotation="15 -120 0" src="#cloud" width="10" height="5"></a-image>
+            <a-image id="cloud" rotation="15 120 0" src="#cloud" width="10" height="5"></a-image>
+            <a-image id="cloud" rotation="15 0 0" src="#cloud" width="10" height="5"></a-image>
+        </a-entity>
 
-        <a-entity camera position="0 1.6 2" look-controls></a-entity>
+        <a-ocean id="ocean" width="40" depth="40" density="20" color="#0ab7c1"></a-ocean>
+        <a-sky id="sky" color="#3498DB"></a-sky>
+
+        <a-entity id="camera" camera position="0 1.6 2" look-controls></a-entity>
 
     </a-scene>
 </body>
