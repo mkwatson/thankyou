@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://rawgit.com/blairmacintyre/aframe-look-at-billboard-component/master/dist/aframe-look-at-billboard-component.min.js"></script>
 </head>
 
 <body>
@@ -17,21 +18,27 @@
         <a-assets>
             <img id="cloud" src="https://rawgit.com/mkwatson/thankyou/master/img/cloud.png">
             <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+            <a-asset-item id="tree" src="https://rawgit.com/mkwatson/thankyou/master/dae/tree.dae"></a-asset-item>
         </a-assets>
 
-        <a-sphere id="island" theta-length="20" position="0 -14.5 0" radius="15" color="#ffcc99"></a-sphere>
+        <a-sphere id="island" theta-length="20" position="0 -14.5 0" radius="15" color="#ffcc99">
+            <a-entity collada-model="#tree" class="tree" position="-1.5 14.8 1.5" scale="0.1 0.1 0.1"></a-entity>
+            <a-entity collada-model="#tree" class="tree" position="-.3 14.8 2.4" scale="0.1 0.1 0.1"></a-entity>
+            <a-entity collada-model="#tree" class="tree" position="-1.5 14.8 1.5" scale="0.1 0.1 0.1"></a-entity>
+            <a-entity collada-model="#tree" class="tree" position="-.3 14.8 2.4" scale="0.1 0.1 0.1"></a-entity>
+        </a-sphere>
 
         <a-circle id="sun" position="-20 30 -25" rotation="45 0 0" color="yellow" radius="5"></a-circle>
 
         <a-entity animation="property: rotation; to: 0 360 0; easing: linear; dur:100000; loop:true" layout="type: circle; radius: 15" position="0 3 0">
-            <a-image id="cloud" rotation="15 -120 0" src="#cloud" width="10" height="5"></a-image>
-            <a-image id="cloud" rotation="15 120 0" src="#cloud" width="10" height="5"></a-image>
-            <a-image id="cloud" rotation="15 0 0" src="#cloud" width="10" height="5"></a-image>
+            <a-image id="cloud" src="#cloud" width="10" height="5" billboard></a-image>
+            <a-image id="cloud" src="#cloud" width="10" height="5" billboard></a-image>
+            <a-image id="cloud" src="#cloud" width="10" height="5" billboard></a-image>
         </a-entity>
 
         <a-entity text-geometry="value: Thank You!; font: #optimerBoldFont; size: 2" position="-6 2 -7"></a-entity>
 
-        <a-ocean id="ocean" width="40" depth="40" density="20" color="#0ab7c1"></a-ocean>
+        <a-ocean id="ocean" width="40" depth="40" density="20" color="yellow"></a-ocean>
         <a-sky id="sky" color="#3498DB"></a-sky>
 
         <a-entity id="camera" camera position="0 1.6 2" look-controls></a-entity>

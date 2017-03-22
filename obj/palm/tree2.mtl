@@ -1,0 +1,27 @@
+# Blender MTL File: 'tree.blend'
+# Material Count: 2
+
+newmtl palm_bark
+Ns 94.117647
+Ka 0.000000 0.000000 0.000000
+Kd 0.855806 0.811423 0.706649
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd palm_bark_tex.png
+map_Bump palm_bark_nm.png
+map_Ks palm_bark_tex.png
+
+newmtl palm_leaves
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.002065 0.038062 0.003493
+Ks 0.002501 0.039216 0.003754
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd palm_leaf.png
+map_d palm_leaf.png
